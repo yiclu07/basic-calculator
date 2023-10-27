@@ -14,8 +14,10 @@ body {
 
 .calculator-container {
   display: grid;
-  grid-template-columns: repeat(4, 10vw);
-  grid-template-rows: repeat(6, 10vh);
+  width: 40vw;
+  height: 60vh;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(6, 1fr);
 }
 
 .userInput {
