@@ -1,5 +1,6 @@
 let evalString = "";
 const userInput = document.getElementsByClassName("userInput")[0];
+const calculateBtn = document.getElementsByClassName("calculate-btn")[0];
 
 /* regex is set up to look for any character that is not 0-9 or [÷+-×.] */
 const mathRegex = /[^\d÷+\-×\.]|[÷+\-×\.][÷+\-×\.]+/;
@@ -21,4 +22,16 @@ const handleChange = (e) => {
   console.log("handleChange is running");
 };
 
+const handleCalculate = (e) => {
+  if (evalString) {
+    userInput.value = calculate();
+  }
+};
+
+const calculate = () => {
+  const result = eval(evalString);
+  return result;
+};
+
 userInput.addEventListener("input", handleChange);
+calculateBtn.addEventListener("click", handleCalculate);
