@@ -1,13 +1,13 @@
 let evalString = "";
 const userInput = document.getElementsByClassName("userInput")[0];
 const calculateBtn = document.getElementsByClassName("calculate-btn")[0];
+const buttonPadItems = document.getElementsByClassName("button-pad");
 
 /* regex is set up to look for any character that is not 0-9 or [÷+-×./*] */
 const mathRegex = /[^\d÷+\-×\.\*\/]|[÷+\-×\.\*\/][÷+\-×\.\*\/]+/;
 
 /* handles */
 const handleChange = (e) => {
-  console.log(`typeof e.target.value: ${typeof e.target.value}`);
   if (mathRegex.test(e.target.value)) {
     userInput.value = evalString;
   } else {
@@ -36,6 +36,19 @@ const handleEnterPress = (e) => {
   }
 };
 
+const handleButtonPadClick = (e) => {
+  if (mathRegex.test(userInput.value + e.target.value)) {
+    return;
+  } else {
+    userInput.value = userInput.value + e.target.value;
+    evalString = userInput.value;
+  }
+};
+
 userInput.addEventListener("input", handleChange);
 userInput.addEventListener("keypress", handleEnterPress);
 calculateBtn.addEventListener("click", handleCalculate);
+
+for (let item of buttonPadItems) {
+  item.addEventListener("click", handleButtonPadClick);
+}
