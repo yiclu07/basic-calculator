@@ -25,6 +25,7 @@ const handleChange = (e) => {
 const handleCalculate = (e) => {
   if (evalString) {
     userInput.value = calculate();
+    evalString = userInput.value;
   }
 };
 
