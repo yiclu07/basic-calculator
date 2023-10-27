@@ -33,5 +33,13 @@ const calculate = () => {
   return result;
 };
 
+const handleEnterPress = (e) => {
+  if (e.key === "Enter") {
+    e.preventDefault();
+    calculateBtn.click();
+  }
+};
+
 userInput.addEventListener("input", handleChange);
+userInput.addEventListener("keypress", handleEnterPress);
 calculateBtn.addEventListener("click", handleCalculate);
